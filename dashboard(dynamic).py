@@ -13,6 +13,7 @@ layout = plotly.graph_objs.Layout(
 )
 
 app = Dash(__name__)
+server = app.server
 
 df = pd.read_excel("dashboard.xlsx")
 def success(outcome):
@@ -168,4 +169,4 @@ app.layout=html.Div([
 ])
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server("0.0.0.0", debug = False, port=int(os.environ.get('PORT',8000)))
